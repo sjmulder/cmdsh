@@ -33,8 +33,7 @@ to_argv(const char *input,
 		if (in_quotes) {
 			if (*s == '\"') in_quotes = 0; else *d++ = *s;
 		} else if (*s == '\"') {
-			if (in_arg) *d++ = '\0';
-			argv[argc++] = d;
+			if (!in_arg) argv[argc++] = d;
 			in_arg = 1;
 			in_quotes = 1;
 		} else if (isspace(*s)) {

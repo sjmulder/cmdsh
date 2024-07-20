@@ -98,7 +98,7 @@ test_to_argv(void)
 	assert(!strcmp(argv[1], "code/foo"));
 	assert(!argv[2]);
 
-	printf("to_argv: %s\n", input = "ls \"code/\"foo");
+	printf("to_argv: %s\n", input = "ls code\"/\"foo");
 	argc = to_argv(input, buf, LEN(buf), argv, LEN(argv));
 	assert(argc == 2);
 	assert(!strcmp(argv[0], "ls"));
