@@ -7,4 +7,4 @@ int to_argv(const char *input,
     char **argv, size_t argv_len);
 
 void cmd_prompt(char *buf, size_t buf_sz);
-void cmd_eval(char **argv);
+void cmd_eval(int argc, char **argv);

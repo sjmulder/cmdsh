@@ -22,7 +22,7 @@ main()
 		if (argc == -1)
 			warnx("parsing error");
 		else if (argc > 0)
-			cmd_eval(argv);
+			cmd_eval(argc, argv);
 	}
 
 	return 0;

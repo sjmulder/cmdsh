@@ -1,6 +1,8 @@
 /* Copyright (c) 2024 Sijmen J. Mulder. See LICENSE.txt */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 #include <assert.h>
 #include <unistd.h>
@@ -68,11 +70,23 @@ cmd_prompt(char *buf, size_t buf_sz)
 }
 
 void
-cmd_eval(char **argv)
+cmd_eval(int argc, char **argv)
 {
 	pid_t pid;
 
-	switch ((pid = fork())) {
+	assert(argc > 0);
+	assert(argv[0]);
+
+	if (!strcasecmp(argv[0], "exit")) {
+		if (argc != 1)
+			warnx("too many arguments for EXIT");
+		exit(0);
+	} else if (!strcasecmp(argv[0], "cd")) {
+		if (argc != 2)
+			warnx("too many arguments for CD");
+		else if (chdir(argv[1]) == -1)
+			warn(NULL);
+	} else switch ((pid = fork())) {
 	case -1:
 		warn("%s", argv[0]);
 		break;
