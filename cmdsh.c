@@ -108,8 +108,7 @@ cmd_eval(int argc, char **argv)
 		break;
 	case 0:
 		execvp(argv[0], argv);
-		warn("%s", argv[0]);
-		break;
+		err(1, "%s", argv[0]);
 	default:
 		waitpid(pid, NULL, 0);
 		break;
