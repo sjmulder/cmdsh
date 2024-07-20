@@ -37,6 +37,7 @@ jobs:
     runs-on: '${{ matrix.agent }}'
     env:
       CC: '${{ matrix.cc }}'
+      CFLAGS: '-Werror'
     steps:
     - uses: actions/checkout@v4
     - run: make
