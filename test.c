@@ -84,11 +84,11 @@ test_to_argv(void)
 	assert(!strcmp(argv[2], "--all"));
 	assert(!argv[3]);
 
-	printf("to_argv: %s\n", input = "ls \"code/foo\"");
+	printf("to_argv: %s\n", input = "ls \"\"");
 	argc = to_argv(input, buf, LEN(buf), argv, LEN(argv));
 	assert(argc == 2);
 	assert(!strcmp(argv[0], "ls"));
-	assert(!strcmp(argv[1], "code/foo"));
+	assert(!strcmp(argv[1], ""));
 	assert(!argv[2]);
 
 	printf("to_argv: %s\n", input = "ls \"code/foo\"");
