@@ -11,7 +11,14 @@ jobs:
         - { agent: macos-12, CC: cc }
         - { agent: macos-13, CC: cc }
         - { agent: macos-14, CC: cc }
-        - { agent: debian12-agent, CC: cc }
+        - { agent: debian12-agent, CC: gcc-11 }
+        - { agent: debian12-agent, CC: gcc-12 }
+        - { agent: debian12-agent, CC: i686-linux-gnu-gcc-11 }
+        - { agent: debian12-agent, CC: i686-linux-gnu-gcc-12 }
+        - { agent: debian12-agent, CC: clang-13 }
+        - { agent: debian12-agent, CC: clang-14 }
+        - { agent: debian12-agent, CC: clang-15 }
+        - { agent: debian12-agent, CC: clang-16 }
     runs-on: '${{ matrix.agent }}'
     env:
       CC: '${{ matrix.cc }}'
