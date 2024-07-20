@@ -36,12 +36,12 @@ to_argv(const char *input,
 			if (!in_arg) argv[argc++] = d;
 			in_arg = 1;
 			in_quotes = 1;
-		} else if (isspace(*s)) {
+		} else if (isspace((int)*s)) {
 			if (in_arg) *d++ = '\0';
 			in_arg = 0;
 		} else if (*s == '.' && in_arg && argc == 1 && (!s[1]
 		    || s[1] == '/' || s[1] == '\\' || s[1] == '.'
-		    || isspace(s[1]))) {
+		    || isspace((int)s[1]))) {
 			*d++ = '\0';
 			argv[argc++] = d;
 			*d++ = *s;
@@ -49,7 +49,7 @@ to_argv(const char *input,
 			if (in_arg) *d++ = '\0';
 			argv[argc++] = d;
 			in_arg = 1;
-			if (s[1] && s[2] && s[2]!='/' && !isspace(s[2]))
+			if (s[1] && s[2] && s[2]!='/' && !isspace((int)s[2]))
 				*d++ = '-';
 			*d++ = '-';
 		} else {
