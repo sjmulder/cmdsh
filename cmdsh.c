@@ -95,7 +95,8 @@ cmd_eval(int argc, char **argv)
 	if (!strcasecmp(argv[0], "exit")) {
 		if (argc != 1)
 			warnx("too many arguments for EXIT");
-		exit(0);
+		else
+			exit(0);
 	} else if (!strcasecmp(argv[0], "cd")) {
 		if (argc != 2)
 			warnx("too many arguments for CD");
