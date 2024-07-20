@@ -40,7 +40,7 @@ Non-goals;
 This shell is not for serious use (but people are still using
 [ed(1)](https://man.openbsd.org/ed) so who knows). Many important
 features are missing, such as interrupt handling, variables, pipes,
-output redirection and control flow statements. See [TODO.md](TODO.md).
+output redirection and control flow statements. See [TODO](TODO.md).
 
 Building
 --------
@@ -54,4 +54,4 @@ dependencies.
 Author
 ------
 Copyright (c) 2024 Sijmen J. Mulder (<ik@sjmulder.nl>). Licensed under
-the GNU GPL 3.0 or any later version. See [LICENSE.txt](LICENSE.md).
+the GNU GPL 3.0 or any later version. See [license](LICENSE.txt).
