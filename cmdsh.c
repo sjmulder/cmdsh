@@ -64,7 +64,17 @@ to_argv(const char *input,
 void
 cmd_prompt(char *buf, size_t buf_sz)
 {
-	printf("\nC:>");
+	static char cwd[512];
+	int i;
+
+	if (getcwd(cwd, sizeof(cwd))) {
+		for (i=0; cwd[i]; i++)
+			if (cwd[i] == '/')
+				cwd[i] = '\\';
+		printf("\nC:%s>", cwd);
+	} else
+		printf("\n...>");
+
 	fflush(stdout);
 	fgets(buf, buf_sz, stdin);
 }

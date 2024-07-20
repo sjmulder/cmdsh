@@ -6,7 +6,7 @@ Unix shell with CMD.EXE / COMMAND.COM syntax.
 
 Example:
 
-    C:> ls/p/all code\foo
+    C:\home\sjmulder>ls/p/all code\foo
 
 Is equivalent to:
 
