@@ -14,4 +14,3 @@ More CMD-isms:
 
 General:
  - man page
- - CI builds
