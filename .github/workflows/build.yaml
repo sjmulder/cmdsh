@@ -1,24 +1,17 @@
 on: push
 
 jobs:
-  build-ubuntu:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - run: make
-    - run: make check
-  build-macos:
-    runs-on: macos-latest
-    steps:
-    - uses: actions/checkout@v4
-    - run: make
-    - run: make check
-  build-self-hosted:
+  build:
     strategy:
       matrix:
-        cc: [cc]
-    runs-on: debian12-agent
+        include:
+        - { agent: ubuntu-latest,  CC: cc }
+        - { agent: macos-latest,   CC: cc }
+        - { agent: debian12-agent, CC: cc }
+    runs-on: '${{ matrix.agent }}'
+    env:
+      CC: '${{ matrix.cc }}'
     steps:
     - uses: actions/checkout@v4
-    - run: CC=${{ matrix.cc }} make
-    - run: CC=${{ matrix.cc }} make check
+    - run: make
+    - run: make check
