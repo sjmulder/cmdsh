@@ -5,8 +5,12 @@ jobs:
     strategy:
       matrix:
         include:
-        - { agent: ubuntu-latest,  CC: cc }
-        - { agent: macos-latest,   CC: cc }
+        - { agent: ubuntu-20.04, CC: cc }
+        - { agent: ubuntu-22.04, CC: cc }
+        - { agent: ubuntu-24.04, CC: cc }
+        - { agent: macos-12, CC: cc }
+        - { agent: macos-13, CC: cc }
+        - { agent: macos-14, CC: cc }
         - { agent: debian12-agent, CC: cc }
     runs-on: '${{ matrix.agent }}'
     env:
