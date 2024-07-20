@@ -1,3 +1,6 @@
+DESTDIR?=
+PREFIX?=	/usr/local
+
 CFLAGS+=	-Wall -Wextra
 
 OBJ=		cmdsh.o main.o
@@ -7,6 +10,15 @@ all: cmdsh test
 
 check: all
 	./test
+
+install: all
+	install -d ${DESTDIR}${PREFIX}/bin
+	install -m755 cmdsh ${DESTDIR}${PREFIX}/bin/
+	@echo "NOTE: don't forget to add ${PREFIX}/bin/cmdsh to /etc/shells"
+
+uninstall:
+	rm -f ${DESTDIR}${PREFIX}/bin/cmdsh
+	@echo "NOTE: don't forget to remove ${PREFIX}/bin/cmdsh from /etc/shells"
 
 clean:
 	rm -f cmdsh test *.o
@@ -21,4 +33,4 @@ cmdsh.o: cmdsh.h
 main.o:  cmdsh.h
 test.o:  cmdsh.h
 
-.PHONY: all check clean
+.PHONY: all check install uninstall clean

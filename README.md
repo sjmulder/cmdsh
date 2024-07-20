@@ -30,8 +30,9 @@ Building
 Should work on any Unix-like (Linux, BSD, macOS) without further
 dependencies.
 
-    make 
-    make check
+    make
+    sudo make install
+    echo '/usr/local/cmdsh' | sudo tee -a /etc/shells >/dev/null
 
 Author
 ------
