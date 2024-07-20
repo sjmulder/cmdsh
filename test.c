@@ -117,6 +117,33 @@ test_to_argv(void)
 	assert(!strcmp(argv[0], "ls"));
 	assert(!strcmp(argv[1], "-la"));
 	assert(!argv[2]);
+
+	puts("to_argv: no space between command and .");
+	argc = to_argv("ls..", buf, LEN(buf), argv, LEN(argv));
+	assert(argc == 2);
+	assert(!strcmp(argv[0], "ls"));
+	assert(!strcmp(argv[1], ".."));
+	assert(!argv[2]);
+
+	puts("to_argv: no space between command and ..");
+	argc = to_argv("ls.", buf, LEN(buf), argv, LEN(argv));
+	assert(argc == 2);
+	assert(!strcmp(argv[0], "ls"));
+	assert(!strcmp(argv[1], "."));
+	assert(!argv[2]);
+
+	puts("to_argv: no space between command and ./path");
+	argc = to_argv("ls.\\code", buf, LEN(buf), argv, LEN(argv));
+	assert(argc == 2);
+	assert(!strcmp(argv[0], "ls"));
+	assert(!strcmp(argv[1], "./code"));
+	assert(!argv[2]);
+
+	puts("to_argv: command with extension");
+	argc = to_argv("ls.exe", buf, LEN(buf), argv, LEN(argv));
+	assert(argc == 1);
+	assert(!strcmp(argv[0], "ls.exe"));
+	assert(!argv[1]);
 }
 
 int

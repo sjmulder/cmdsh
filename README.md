@@ -6,11 +6,13 @@ Unix shell with CMD.EXE / COMMAND.COM syntax.
 
 Example:
 
-    C:\home\sjmulder>ls/p/all code\foo
+    C:\home\sjmulder>ls/l/all code\foo
+    C:\home\sjmulder>cd..\john
 
 Is equivalent to:
 
-    $ ls -p --all code/foo
+    $ ls -l --all src/foo
+    $ cd ../john
 
 The evil CMD syntax is transformed into a Unix process invocation with
 the following rules:
@@ -18,8 +20,10 @@ the following rules:
  1. Every `/` starts a new argument (e.g. a space is inserted).
  2. Every `/` is transformed into a `-` if one character follows it, or
     `--` if more than one character follows it.
- 3. Every '\' is transformed into `/`
+ 3. Every '\' is transformed into `/`.
  4. Anything `"in quotes"`  is ignored.
+ 5. `.`, `..` and paths starting with `.\` or `..\` are split from the
+    command name.
 
 Building
 --------
