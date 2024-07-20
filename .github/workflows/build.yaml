@@ -35,6 +35,7 @@ jobs:
         - { agent: debian12-agent, CC: clang-15 }
         - { agent: debian12-agent, CC: clang-16 }
         - { agent: debian12-agent, CC: musl-gcc }
+        - { agent: debian12-agent, CC: tcc }
     runs-on: '${{ matrix.agent }}'
     env:
       CC: '${{ matrix.cc }}'
