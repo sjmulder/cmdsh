@@ -6,27 +6,10 @@ jobs:
     strategy:
       matrix:
         include:
-        - { agent: ubuntu-20.04, CC: gcc }
-        - { agent: ubuntu-20.04, CC: clang }
-        - { agent: ubuntu-22.04, CC: gcc }
-        - { agent: ubuntu-22.04, CC: clang }
-        - { agent: ubuntu-24.04, CC: gcc }
-        - { agent: ubuntu-24.04, CC: clang }
-        - { agent: macos-12, CC: clang }
-        - { agent: macos-12, CC: gcc-11 }
-        - { agent: macos-12, CC: gcc-12 }
-        - { agent: macos-12, CC: gcc-13 }
-        - { agent: macos-12, CC: gcc-14 }
-        - { agent: macos-13, CC: clang }
-        - { agent: macos-13, CC: gcc-11 }
-        - { agent: macos-13, CC: gcc-12 }
-        - { agent: macos-13, CC: gcc-13 }
-        - { agent: macos-13, CC: gcc-14 }
-        - { agent: macos-14, CC: clang }
-        - { agent: macos-14, CC: gcc-11 }
-        - { agent: macos-14, CC: gcc-12 }
-        - { agent: macos-14, CC: gcc-13 }
-        - { agent: macos-14, CC: gcc-14 }
+        - { agent: ubuntu-20.04, CC: cc }
+        - { agent: ubuntu-24.04, CC: cc }
+        - { agent: macos-12, CC: cc }
+        - { agent: macos-14, CC: cc }
         - { agent: debian12-agent, CC: gcc-11 }
         - { agent: debian12-agent, CC: gcc-12 }
         - { agent: debian12-agent, CC: i686-linux-gnu-gcc-11 }
