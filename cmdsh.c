@@ -1,8 +1,11 @@
 /* Copyright (c) 2024 Sijmen J. Mulder. See LICENSE.txt */
 
-#include <stddef.h>
+#include <stdio.h>
 #include <ctype.h>
 #include <assert.h>
+#include <unistd.h>
+#include <sys/wait.h>
+#include <err.h>
 #include "cmdsh.h"
 
 int
@@ -54,4 +57,31 @@ to_argv(const char *input,
 	
 	argv[argc] = NULL;
 	return argc;
+}
+
+void
+cmd_prompt(char *buf, size_t buf_sz)
+{
+	printf("\nC:>");
+	fflush(stdout);
+	fgets(buf, buf_sz, stdin);
+}
+
+void
+cmd_eval(char **argv)
+{
+	pid_t pid;
+
+	switch ((pid = fork())) {
+	case -1:
+		warn("%s", argv[0]);
+		break;
+	case 0:
+		execvp(argv[0], argv);
+		warn("%s", argv[0]);
+		break;
+	default:
+		waitpid(pid, NULL, 0);
+		break;
+	}
 }
