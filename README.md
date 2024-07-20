@@ -2,7 +2,7 @@ cmd-sh
 ======
 CMD - (S)hell from (H)ell
 
-Unix shell with CMD.EXE / COMMAND.COM syntax.
+Unix shell with CMD.EXE/COMMAND.COM-like syntax.
 
 Example:
 
