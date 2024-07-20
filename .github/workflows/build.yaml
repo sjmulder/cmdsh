@@ -13,3 +13,12 @@ jobs:
     - uses: actions/checkout@v4
     - run: make
     - run: make check
+  build-self-hosted:
+    strategy:
+      matrix:
+        cc: [cc]
+    runs-on: debian12-agent
+    steps:
+    - uses: actions/checkout@v4
+    - run: CC=${{ matrix.cc }} make
+    - run: CC=${{ matrix.cc }} make check
