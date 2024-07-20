@@ -11,7 +11,7 @@ Example:
 
 Is equivalent to:
 
-    $ ls -l --all src/foo
+    $ ls -l --all code/foo
     $ cd ../john
 
 The evil CMD syntax is transformed into a Unix process invocation with
@@ -20,7 +20,7 @@ the following rules:
  1. Every `/` starts a new argument (i.e. a space is inserted).
  2. Every `/` is transformed into a `-` if one character follows it, or
     `--` if more than one character follows it.
- 3. Every '\' is transformed into `/`.
+ 3. Every `\` is transformed into `/`.
  4. Anything `"in quotes"`  is ignored.
  5. `.`, `..` and paths starting with `.\` or `..\` are split from the
     command name.
