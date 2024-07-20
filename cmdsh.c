@@ -1,3 +1,5 @@
+/* Copyright (c) 2024 Sijmen J. Mulder. See LICENSE.txt */
+
 #include <stddef.h>
 #include <ctype.h>
 #include <assert.h>

@@ -31,4 +31,5 @@ dependencies.
 
 Author
 ------
-Sijmen J. Mulder
+Copyright (c) 2024 Sijmen J. Mulder (<ik@sjmulder.nl>). Licensed under
+the GNU GPL 3.0 or any later version. See LICENSE.txt.
